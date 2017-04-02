@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include "App.h"
+#include "ArgumentException.h"
 
 using namespace std;
 
@@ -12,14 +13,14 @@ void App::Init(int *argc, char **argv) {
             if (i + 1 < *argc)
                 InitFromMatrix(argv[i + 1]);
             else
-                ;//TODO Exception
+                throw ArgumentException();
         }
 
         if (string(argv[i]) == "--list") {
             if (i + 1 < *argc)
                 InitFromList(argv[i + 1]);
             else
-                ;//TODO Exception
+                throw ArgumentException();
         }
 
         if (string(argv[i]) == "--stream") {
@@ -30,14 +31,14 @@ void App::Init(int *argc, char **argv) {
             if (i + 1 < *argc)
                 Find(atoi(argv[i + 1]));
             else
-                ;//TODO Exception
+                throw ArgumentException();
         }
 
         if (string(argv[i]) == "--delete") {
             if (i + 1 < *argc)
                 graph->Del(atoi(argv[i + 1]));
             else
-                ;//TODO Exception
+                throw ArgumentException();
         }
 
         if (string(argv[i]) == "--print") {
